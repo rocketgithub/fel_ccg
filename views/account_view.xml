@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="invoice_form_fel_ccg">
+            <field name="name">account.invoice.form.fel_ccg</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="fel_gt.invoice_form_fel_gt"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="resultado_xml_fel" position="after">
+                        <field name="name_pdf_fel" invisible="1"/>
+                        <field name="pdf_fel" filename="name_pdf_fel"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="journal_form_fel_ccg">
+            <field name="name">account.journal.form.fel_ccg</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="fel_gt.journal_form_fel_gt"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="tipo_documento_fel" position="after">
+                        <field name="generar_fel"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_company_form_fel_ccg" model="ir.ui.view">
+            <field name="name">res.company.form.fel_ccg</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="fel_gt.view_company_form_fel_gt"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="frases_fel" position="after">
+                        <field name="usuario_fel"/>
+                        <field name="clave_fel"/>
+                        <field name="pruebas_fel"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

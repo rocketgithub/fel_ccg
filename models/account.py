@@ -41,14 +41,14 @@ class AccountMove(models.Model):
                 logging.warn(xmls)
                 xmls_base64 = base64.b64encode(xmls)
 
-                request_url = "https://testws.ccgfel.gt"
+                request_url = "https://ws.ccgfel.gt"
                 if factura.company_id.pruebas_fel:
-                    request_url = "https://ws.ccgfel.gt"
-
+                    request_url = "https://testws.ccgfel.gt"
+                    
                 params = { "username": factura.company_id.usuario_fel, "password": factura.company_id.clave_fel, "grant_type": "password"}
-                r = requests.post("https://"+request_url+"/Api/GetToken", json=params)
+                r = requests.post(request_url+"/Api/GetToken", data=params)
                 logging.warn(r.text)
-                resultado = r.json
+                resultado = r.json()
 
                 if resultado["access_token"]:
                     token = resultado["access_token"]
@@ -56,9 +56,9 @@ class AccountMove(models.Model):
 
                     headers = { "Authorization": "Bearer "+token }
                     params = { "xmlDte": xmls_base64, "Referencia": referencia }
-                    r = requests.post("https://"+request_url+"/Api/CertificarDte", params=params)
-                    logging.warn(r)
-                    resultado = r.json
+                    r = requests.post(request_url+"/Api/CertificarDte", json=params, headers=headers)
+                    logging.warn(r.text)
+                    resultado = r.json()
 
                     if resultado["Resultado"]:
                         factura.firma_fel = resultado["UUID"]
@@ -86,14 +86,14 @@ class AccountMove(models.Model):
                 logging.warn(xmls)
                 xmls_base64 = base64.b64encode(xmls)
 
-                request_url = "https://testws.ccgfel.gt"
+                request_url = "https://ws.ccgfel.gt"
                 if factura.company_id.pruebas_fel:
-                    request_url = "https://ws.ccgfel.gt"
+                    request_url = "https://testws.ccgfel.gt"
 
                 params = { "username": factura.company_id.usuario_fel, "password": factura.company_id.clave_fel, "grant_type": "password"}
-                r = requests.post("https://"+request_url+"/Api/GetToken", params=params)
+                r = requests.post(request_url+"/Api/GetToken", data=params)
                 logging.warn(r.text)
-                resultado = r.json
+                resultado = r.json()
 
                 if resultado["access_token"]:
                     token = resultado["access_token"]
@@ -101,9 +101,9 @@ class AccountMove(models.Model):
 
                     headers = { "Authorization": "Bearer "+token }
                     params = { "xmlDte": xmls_base64 }
-                    r = requests.post("https://"+request_url+"/Api/AnularDte", json=params)
-                    logging.warn(r)
-                    resultado = r.json
+                    r = requests.post(request_url+"/Api/AnularDte", json=params, headers=headers)
+                    logging.warn(r.text)
+                    resultado = r.json()
                     
                     if not resultado["Resultado"]:
                         raise UserError(r.text)

@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 {
-    'name': 'FEL Megaprint',
+    'name': 'FEL CCG',
     'version': '1.0',
     'category': 'Custom',
     'description': """ Integración con factura electrónica de Megaprint """,
-    'author': 'Rodrigo Fernandez',
+    'author': 'aquíH',
     'website': 'http://aquih.com/',
     'depends': ['fel_gt'],
     'data': [

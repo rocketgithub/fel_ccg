@@ -9,8 +9,10 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="resultado_xml_fel" position="after">
+                        <!--
                         <field name="name_pdf_fel" invisible="1"/>
                         <field name="pdf_fel" filename="name_pdf_fel"/>
+                        -->
                     </field>
                 </data>
             </field>

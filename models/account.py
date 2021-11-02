@@ -17,7 +17,7 @@ import logging
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    #pdf_fel = fields.Binary('PDF FEL', copy=False)
+    pdf_fel = fields.Char('PDF FEL', copy=False)
     #name_pdf_fel = fields.Char('Nombre archivo PDF FEL', default='fel.pdf', size=32)
     
     def _post(self, soft=True):

@@ -4,7 +4,7 @@
     'name': 'FEL CCG',
     'version': '1.0',
     'category': 'Custom',
-    'description': """ Integración con factura electrónica de Megaprint """,
+    'description': """ Integración con factura electrónica de CCG """,
     'author': 'aquíH',
     'website': 'http://aquih.com/',
     'depends': ['fel_gt'],

@@ -37,8 +37,8 @@ class AccountMove(models.Model):
                     return
                 
                 dte = factura.dte_documento()
-                logging.warn(dte)
                 xmls = etree.tostring(dte, encoding="UTF-8")
+                logging.warning(xmls.decode("utf-8"))
                 xmls_base64 = base64.b64encode(xmls)
 
                 request_url = "https://ws.ccgfel.gt"
